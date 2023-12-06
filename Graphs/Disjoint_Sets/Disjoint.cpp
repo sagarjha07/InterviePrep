@@ -7,6 +7,7 @@ class Disjoint{
         vector<int> rank;
         vector<int> size;
 
+    public:
         Disjoint(int n) {
             parent.resize(n+1);
             rank.resize(n+1);
@@ -16,8 +17,7 @@ class Disjoint{
                 size[i]=1;
             }
         }
-
-    public:
+        
     //Find parent of a node with path compression
         int findParent(int node) {
             if(node == parent[node]) return node;
