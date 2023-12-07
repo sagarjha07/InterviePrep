@@ -8,11 +8,11 @@ class Solution
 	    visited[node]=true;
 	    instack[node]=true;
 	    for(int nbr:adj[node]){
-	        if(instack[nbr]==true) return true;
-	        if(!visited[nbr]){
+            if(!visited[nbr]){
 	            bool ans=dfs(nbr,adj,visited,instack);
 	            if(ans) return true;
 	        }
+	        else if(instack[nbr]==true) return true;
 	    }
 	    instack[node]=false;
 	    return false;
