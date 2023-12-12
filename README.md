@@ -1,2 +1,2 @@
 # InterviePrep
-Interview Preparation question related to DSA Interviews in a product based company (MAANGM+).
+Interview Preparation question related to DSA Interviews in a product based company preparation (MAANGM+).
