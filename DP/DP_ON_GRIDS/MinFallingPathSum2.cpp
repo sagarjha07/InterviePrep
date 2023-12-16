@@ -1,4 +1,35 @@
 // LEETCODE 1289
+
+// O(N^2) solution
+class Solution {
+public:
+    int minFallingPathSum(vector<vector<int>>& arr) {
+        int n=arr.size();
+        int m=arr[0].size();
+        vector<int> dp=arr[0];
+        for(int i=1;i<n;i++){
+            int fm=INT_MAX,sm=INT_MAX,fmIdx;
+            for(int j=0;j<n;j++){
+                if(dp[j]<fm){
+                    fm=dp[j];
+                    fmIdx=j;
+                }
+            }
+            for(int j=0;j<n;j++){
+                if(j!=fmIdx && dp[j]<sm) sm=dp[j];
+            }
+            for(int j=0;j<n;j++){
+                if(j==fmIdx) dp[j]=arr[i][j]+sm;
+                else dp[j]=arr[i][j]+fm;
+            }
+        }
+        int ans=INT_MAX;
+        for(int i=0;i<m;i++) ans=min(ans,dp[i]);
+        return ans;
+    }
+};
+
+
 //O(N^3) solution working sinece 1<=n<=200
 class Solution {
 public:
@@ -20,3 +51,4 @@ public:
         return ans;
     }
 };
+
