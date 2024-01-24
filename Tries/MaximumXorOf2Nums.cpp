@@ -1,9 +1,4 @@
-// LEETCODE 1707
-//Maximum xor with an element from array (Online Queries)
-//Sort nums array
-//Sort queries array based on mi
-//Convert whole problem as offline queries
-
+// LEETCODE 421
 class Node{
 public:
     Node*links[2];
@@ -51,30 +46,14 @@ class Trie{
 };
 class Solution {
 public:
-    vector<int> maximizeXor(vector<int>& nums, vector<vector<int>>& queries) {
-        vector<int> ans(queries.size(),0);
-        vector<vector<int>> q;
-        for(int i=0;i<queries.size();i++){
-            q.push_back({queries[i][1],queries[i][0],i});
-        }
-        //sort queries based on mi
-        sort(q.begin(),q.end());
-        //sort nums array
-        sort(nums.begin(),nums.end());
+    int findMaximumXOR(vector<int>& nums) {
         Trie t;
-        int j=0;
-        // O(N+Q)
-        //complete offline queries
-        for(int i=0;i<q.size();i++){
-            int a= q[i][0];
-            int x=q[i][1];
-            int ind=q[i][2];
-            while(j<nums.size() && nums[j]<=a){
-                t.insert(nums[j]);
-                j++;
-            }
-            if(j==0) ans[ind]=-1;
-            else ans[ind]=t.findMaxXor(x);
+        for(int i=0;i<nums.size();i++){
+            t.insert(nums[i]);
+        }
+        int ans=0;
+        for(int i=0;i<nums.size();i++){
+            ans=max(ans,t.findMaxXor(nums[i]));
         }
         return ans;
     }
