@@ -15,8 +15,7 @@ int knapSack(int W, int wt[], int val[], int n) {
 
 // SPACE OPTIMISED DP
 
-int knapSack(int W, int wt[], int val[], int n) 
-    { 
+int knapSack(int W, int wt[], int val[], int n) { 
         vector<int> prev(W+1,0);
         vector<int> curr(W+1,0);
         for(int i=1;i<=n;i++){
@@ -30,4 +29,4 @@ int knapSack(int W, int wt[], int val[], int n)
             prev = curr;
         }
         return prev[W];
-    }
+}
