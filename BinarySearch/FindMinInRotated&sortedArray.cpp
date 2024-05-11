@@ -5,7 +5,6 @@ public:
     int solve(vector<int>&arr,int s,int e){
         while(s<=e){
             int mid=(s+e)/2;
-            cout<<mid<<endl;
             if(arr[mid]<arr[mid+1] && arr[mid]<arr[mid-1]){
                 return arr[mid];
             } else if(arr[mid]>arr[0]){
