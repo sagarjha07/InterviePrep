@@ -5,25 +5,24 @@
 
 class Solution {
 public:
-    vector<vector<int>> insert(vector<vector<int>>& arr, vector<int>& v) {
+    vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
+        int n= intervals.size();
+        int i=0;
         vector<vector<int>> ans;
-        int s=v[0];
-        int e=v[1];
-        bool intervalNotPresent=true;
-        for(vector<int>&a:arr){
-            if(a[1]<s) ans.push_back(a);
-            else if(a[0]>e){
-                if(intervalNotPresent) {
-                    ans.push_back({s,e});
-                    intervalNotPresent=false;
-                }
-                ans.push_back(a);
-            }else{
-                s=min(a[0],s);
-                e=max(a[1],e);
-            }
+        while(i<n && intervals[i][1]<newInterval[0]){
+            ans.push_back(intervals[i]);
+            i++;
         }
-        if(intervalNotPresent) ans.push_back({s,e});
+        while(i<n && intervals[i][0]<=newInterval[1]){
+            newInterval[0] = min(intervals[i][0],newInterval[0]);
+            newInterval[1] = max(intervals[i][1],newInterval[1]);
+            i++;
+        }
+        ans.push_back(newInterval);
+        while(i<n){
+            ans.push_back(intervals[i]);
+            i++;
+        }
         return ans;
     }
 };
