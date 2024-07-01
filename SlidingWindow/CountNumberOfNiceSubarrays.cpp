@@ -3,8 +3,6 @@
 //A continuous subarray is called nice if there are k odd numbers on it.
 // Return the number of nice sub-arrays.
 
-Return the number of nice sub-arrays.
-
 class Solution {
 public:
     int solve(vector<int>&nums,int k){
